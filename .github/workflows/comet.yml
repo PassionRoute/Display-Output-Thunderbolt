@@ -1,0 +1,32 @@
+name: "JASPER"
+run-name: "ZEPHYR"
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
+concurrency:
+  group: "RIVER-${{ github.workflow }}"
+  cancel-in-progress: true
+jobs:
+  umbra:
+    permissions:
+      contents: read
+      id-token: write
+      pages: write
+    runs-on: ubuntu-22.04
+    environment:
+      name: "github-pages"
+      url: ${{ steps.SAPPHIRE.outputs.page_url }}
+    steps:
+      - name: "koala"
+        uses: actions/checkout@v6
+      - name: "marble"
+        uses: actions/configure-pages@v6
+      - name: "beacon"
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./
+      - name: "emerald"
+        id: SAPPHIRE
+        uses: actions/deploy-pages@v5
